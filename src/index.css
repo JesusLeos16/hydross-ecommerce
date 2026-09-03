@@ -32,7 +32,7 @@ em { font-style: italic; color: var(--rose); }
 .announcement span { padding: 0 .6rem; color: var(--pink); }
 .site-header { position: relative; z-index: 10; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 1.45rem max(6vw, 28px); background: var(--cream); }
 .wordmark { display: block; width: 138px; height: 38px; overflow: hidden; font-size: 1.55rem; font-weight: 800; letter-spacing: -.09em; }
-.brand-logo-header { display: block; width: 138px; height: 38px; object-fit: cover; object-position: center 51%; }
+.brand-logo-header { display: block; width: 150px; height: 42px; object-fit: cover; object-position: center 50%; background: transparent; }
 .wordmark span, .pink-dot { color: var(--rose); }
 .main-nav { display: flex; align-items: center; gap: 2.2rem; }
 .main-nav a { position: relative; font-size: .7rem; font-weight: 800; }
