@@ -1,11 +1,12 @@
 export const brandCopy = {
   maintenance: {
     eyebrow: 'Mantenimiento / desarrollo',
-    title: 'Hydross está tomando forma.',
-    description: 'La tienda se encuentra en desarrollo. Estamos afinando catálogo, productos e información comercial.',
-    cta: 'Entrar al demo',
-    note: 'Demostración visual · sin compras reales',
-    status: 'Colección inicial · en preparación',
+    title: 'La tienda está',
+    accent: 'en construcción.',
+    description: 'Estamos terminando la colección y preparando la información comercial. Hydross volverá cuando esté lista.',
+    statusLabel: 'Estado actual',
+    status: 'Acceso temporalmente cerrado',
+    note: 'La aplicación continúa en desarrollo.',
   },
   navigation: {
     shop: 'Tienda',

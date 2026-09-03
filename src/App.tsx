@@ -149,9 +149,8 @@ function NavigateEmpty() { return <main className="empty-cart section-pad"><div 
 function NotFound() { return <main className="empty-cart section-pad"><p className="eyebrow">404</p><h2>Esta página no existe.</h2><Link className="button button-dark" to="/">Volver al inicio</Link></main> }
 
 function App() {
-  const [enteredDemo, setEnteredDemo] = useState(false)
-  if (maintenanceEnabled && !enteredDemo) return <><DocumentMeta /><MaintenanceGate onEnter={() => setEnteredDemo(true)} /></>
-  return <><DocumentMeta /><ScrollToLocation /><SiteHeader /><Routes><Route path="/" element={<Home />} /><Route path="/shop" element={<Shop />} /><Route path="/product/:slug" element={<ProductPage />} /><Route path="/find" element={<Finder />} /><Route path="/cart" element={<Cart />} /><Route path="/checkout" element={<Checkout />} /><Route path="*" element={<NotFound />} /></Routes></>
+  const storefront = <><ScrollToLocation /><SiteHeader /><Routes><Route path="/" element={<Home />} /><Route path="/shop" element={<Shop />} /><Route path="/product/:slug" element={<ProductPage />} /><Route path="/find" element={<Finder />} /><Route path="/cart" element={<Cart />} /><Route path="/checkout" element={<Checkout />} /><Route path="*" element={<NotFound />} /></Routes></>
+  return <><DocumentMeta />{maintenanceEnabled ? <MaintenanceGate>{storefront}</MaintenanceGate> : storefront}</>
 }
 
 export default App
