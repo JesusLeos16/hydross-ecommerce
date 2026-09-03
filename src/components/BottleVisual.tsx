@@ -3,7 +3,7 @@ import type { Product } from '../data/products'
 
 export function BottleVisual({ product, large = false }: { product: Product; large?: boolean }) {
   return (
-    <div className={`product-visual tone-${product.tone} format-${product.format} ${large ? 'product-visual-large' : ''}`} aria-label={`Visual conceptual de ${product.name}`}>
+    <div className={`product-visual tone-${product.tone} format-${product.format} ${large ? 'product-visual-large' : ''}`} aria-label={`Imagen conceptual de ${product.name}`}>
       <span className="visual-orbit orbit-one" />
       <span className="visual-orbit orbit-two" />
       <div className="bottle-shadow" />
