@@ -1,4 +1,5 @@
-import { ArrowUpRight, Plus } from 'lucide-react'
+import { ArrowUpRight, Check, Plus } from 'lucide-react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import type { Product } from '../data/products'
 import { formatPrice } from '../data/products'
@@ -7,6 +8,12 @@ import { BottleVisual } from './BottleVisual'
 
 export function ProductCard({ product }: { product: Product }) {
   const addItem = useCart((state) => state.addItem)
+  const [added, setAdded] = useState(false)
+  const handleAdd = () => {
+    addItem(product)
+    setAdded(true)
+    window.setTimeout(() => setAdded(false), 1600)
+  }
   return (
     <article className="product-card">
       <Link to={`/product/${product.slug}`} className="product-image-link">
@@ -15,7 +22,7 @@ export function ProductCard({ product }: { product: Product }) {
       </Link>
       <div className="product-card-copy">
         <div><p className="eyebrow">{product.category} · {product.size}</p><Link to={`/product/${product.slug}`} className="product-name">{product.name}</Link></div>
-        <div className="product-buy"><span><small>Precio de muestra</small>{formatPrice(product.priceMXN)}</span><button onClick={() => addItem(product)} aria-label={`Agregar ${product.name} al carrito`}><Plus size={17} /></button></div>
+        <div className="product-buy"><span><small>Precio de muestra</small>{formatPrice(product.priceMXN)}</span><button className={added ? 'added' : ''} onClick={handleAdd} aria-label={`Agregar ${product.name} al carrito`}>{added ? <Check size={15} /> : <Plus size={17} />}</button></div>
       </div>
     </article>
   )
