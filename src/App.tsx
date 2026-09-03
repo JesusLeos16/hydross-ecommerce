@@ -3,6 +3,7 @@ import { ArrowDown, ArrowRight, ArrowUpRight, Check, ChevronLeft, Minus, Plus, S
 import { Link, Route, Routes, useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { BottleVisual } from './components/BottleVisual'
 import { Footer } from './components/Footer'
+import { MaintenanceGate } from './components/MaintenanceGate'
 import { ProductCard } from './components/ProductCard'
 import { SiteHeader } from './components/SiteHeader'
 import { brandCopy } from './content/brandCopy'
@@ -19,6 +20,8 @@ const metaByRoute: Record<string, { title: string; description: string }> = {
   '/cart': { title: 'Selección · hydross.', description: 'Revisa los conceptos que elegiste en Hydross.' },
   '/checkout': { title: 'Compra de muestra · hydross.', description: 'Revisa una demostración del flujo de compra de Hydross.' },
 }
+
+const maintenanceEnabled = true
 
 function splitLines(value: string) {
   return value.split('\n').map((line) => <span key={line}>{line}<br /></span>)
@@ -146,6 +149,8 @@ function NavigateEmpty() { return <main className="empty-cart section-pad"><div 
 function NotFound() { return <main className="empty-cart section-pad"><p className="eyebrow">404</p><h2>Esta página no existe.</h2><Link className="button button-dark" to="/">Volver al inicio</Link></main> }
 
 function App() {
+  const [enteredDemo, setEnteredDemo] = useState(false)
+  if (maintenanceEnabled && !enteredDemo) return <><DocumentMeta /><MaintenanceGate onEnter={() => setEnteredDemo(true)} /></>
   return <><DocumentMeta /><ScrollToLocation /><SiteHeader /><Routes><Route path="/" element={<Home />} /><Route path="/shop" element={<Shop />} /><Route path="/product/:slug" element={<ProductPage />} /><Route path="/find" element={<Finder />} /><Route path="/cart" element={<Cart />} /><Route path="/checkout" element={<Checkout />} /><Route path="*" element={<NotFound />} /></Routes></>
 }
 
